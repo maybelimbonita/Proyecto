@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BDLiceoCientificoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="IdAlumno" />
+    </Key>
+    <Property Name="IdAlumno" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellidos" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="CUI" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+    <Property Name="NombreEncargado" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TelefonoEncargado" Type="bigint" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlumnoxMateria">
+    <Key>
+      <PropertyRef Name="IdAlumnoMateria" />
+    </Key>
+    <Property Name="IdAlumnoMateria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdAlumno" Type="int" Nullable="false" />
+    <Property Name="IdMateria" Type="int" Nullable="false" />
+    <Property Name="Bimestre1" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bimestre2" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bimestre3" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Bimestre4" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CicloEscolar" Type="varchar" MaxLength="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AlumnoXSeccion">
+    <Key>
+      <PropertyRef Name="IdAlumnoXSeccion" />
+    </Key>
+    <Property Name="IdAlumnoXSeccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdAlumno" Type="int" Nullable="false" />
+    <Property Name="IdSeccion" Type="int" Nullable="false" />
+    <Property Name="FechaAsignacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DetallePago">
+    <Key>
+      <PropertyRef Name="IdDetallePago" />
+    </Key>
+    <Property Name="IdDetallePago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPago" Type="int" Nullable="false" />
+    <Property Name="TipoPago" Type="int" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Grado">
+    <Key>
+      <PropertyRef Name="IdGrado" />
+    </Key>
+    <Property Name="IdGrado" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreGRADO" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maestro">
+    <Key>
+      <PropertyRef Name="IdMaestro" />
+    </Key>
+    <Property Name="IdMaestro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NivelAcademico" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Especializacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Materia">
+    <Key>
+      <PropertyRef Name="IdMateria" />
+    </Key>
+    <Property Name="IdMateria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreMateria" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MaestroDeMateria" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Pagos">
+    <Key>
+      <PropertyRef Name="IdPago" />
+    </Key>
+    <Property Name="IdPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdAlumno" Type="int" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="Detalle" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="FechaPago" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permisos">
+    <Key>
+      <PropertyRef Name="IdPermiso" />
+    </Key>
+    <Property Name="IdPermiso" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombrePermiso" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PermisosxUsuario">
+    <Key>
+      <PropertyRef Name="IdPermisosxUsuario" />
+    </Key>
+    <Property Name="IdPermisosxUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdPermiso" Type="int" Nullable="false" />
+    <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Seccion">
+    <Key>
+      <PropertyRef Name="IdSeccion" />
+    </Key>
+    <Property Name="IdSeccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombreseccion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IdGrado" Type="int" Nullable="false" />
+    <Property Name="MaestroEncargado" Type="int" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TipoPago">
+    <Key>
+      <PropertyRef Name="IdTipoPago" />
+    </Key>
+    <Property Name="IdTipoPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="Estado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellidos" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Usuario" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Contraseña" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Telefono" Type="bigint" Nullable="false" />
+    <Property Name="Correo" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_AlumnoxMateria_Alumno">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="AlumnoxMateria" Type="Self.AlumnoxMateria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="AlumnoxMateria">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AlumnoxMateria_Materia">
+    <End Role="Materia" Type="Self.Materia" Multiplicity="1" />
+    <End Role="AlumnoxMateria" Type="Self.AlumnoxMateria" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materia">
+        <PropertyRef Name="IdMateria" />
+      </Principal>
+      <Dependent Role="AlumnoxMateria">
+        <PropertyRef Name="IdMateria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AlumnoXSeccion_Alumno">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="AlumnoXSeccion" Type="Self.AlumnoXSeccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="AlumnoXSeccion">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AlumnoXSeccion_Seccion">
+    <End Role="Seccion" Type="Self.Seccion" Multiplicity="1" />
+    <End Role="AlumnoXSeccion" Type="Self.AlumnoXSeccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seccion">
+        <PropertyRef Name="IdSeccion" />
+      </Principal>
+      <Dependent Role="AlumnoXSeccion">
+        <PropertyRef Name="IdSeccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetallePago_Pagos">
+    <End Role="Pagos" Type="Self.Pagos" Multiplicity="1" />
+    <End Role="DetallePago" Type="Self.DetallePago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pagos">
+        <PropertyRef Name="IdPago" />
+      </Principal>
+      <Dependent Role="DetallePago">
+        <PropertyRef Name="IdPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetallePago_TipoPago">
+    <End Role="TipoPago" Type="Self.TipoPago" Multiplicity="1" />
+    <End Role="DetallePago" Type="Self.DetallePago" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoPago">
+        <PropertyRef Name="IdTipoPago" />
+      </Principal>
+      <Dependent Role="DetallePago">
+        <PropertyRef Name="IdPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Materia_Maestro">
+    <End Role="Maestro" Type="Self.Maestro" Multiplicity="1" />
+    <End Role="Materia" Type="Self.Materia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maestro">
+        <PropertyRef Name="IdMaestro" />
+      </Principal>
+      <Dependent Role="Materia">
+        <PropertyRef Name="MaestroDeMateria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pagos_Alumno">
+    <End Role="Alumno" Type="Self.Alumno" Multiplicity="1" />
+    <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Alumno">
+        <PropertyRef Name="IdAlumno" />
+      </Principal>
+      <Dependent Role="Pagos">
+        <PropertyRef Name="IdAlumno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Pagos_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Pagos" Type="Self.Pagos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="Pagos">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisosxUsuario_Permisos">
+    <End Role="Permisos" Type="Self.Permisos" Multiplicity="1" />
+    <End Role="PermisosxUsuario" Type="Self.PermisosxUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permisos">
+        <PropertyRef Name="IdPermiso" />
+      </Principal>
+      <Dependent Role="PermisosxUsuario">
+        <PropertyRef Name="IdPermiso" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PermisosxUsuario_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="PermisosxUsuario" Type="Self.PermisosxUsuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IdUsuario" />
+      </Principal>
+      <Dependent Role="PermisosxUsuario">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seccion_Grado">
+    <End Role="Grado" Type="Self.Grado" Multiplicity="1" />
+    <End Role="Seccion" Type="Self.Seccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grado">
+        <PropertyRef Name="IdGrado" />
+      </Principal>
+      <Dependent Role="Seccion">
+        <PropertyRef Name="IdGrado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Seccion_Maestro">
+    <End Role="Maestro" Type="Self.Maestro" Multiplicity="1" />
+    <End Role="Seccion" Type="Self.Seccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maestro">
+        <PropertyRef Name="IdMaestro" />
+      </Principal>
+      <Dependent Role="Seccion">
+        <PropertyRef Name="MaestroEncargado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BDLiceoCientificoModelStoreContainer">
+    <EntitySet Name="Alumno" EntityType="Self.Alumno" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlumnoxMateria" EntityType="Self.AlumnoxMateria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AlumnoXSeccion" EntityType="Self.AlumnoXSeccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DetallePago" EntityType="Self.DetallePago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Grado" EntityType="Self.Grado" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maestro" EntityType="Self.Maestro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Materia" EntityType="Self.Materia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Pagos" EntityType="Self.Pagos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PermisosxUsuario" EntityType="Self.PermisosxUsuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Seccion" EntityType="Self.Seccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TipoPago" EntityType="Self.TipoPago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_AlumnoxMateria_Alumno" Association="Self.FK_AlumnoxMateria_Alumno">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="AlumnoxMateria" EntitySet="AlumnoxMateria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AlumnoxMateria_Materia" Association="Self.FK_AlumnoxMateria_Materia">
+      <End Role="Materia" EntitySet="Materia" />
+      <End Role="AlumnoxMateria" EntitySet="AlumnoxMateria" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AlumnoXSeccion_Alumno" Association="Self.FK_AlumnoXSeccion_Alumno">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="AlumnoXSeccion" EntitySet="AlumnoXSeccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AlumnoXSeccion_Seccion" Association="Self.FK_AlumnoXSeccion_Seccion">
+      <End Role="Seccion" EntitySet="Seccion" />
+      <End Role="AlumnoXSeccion" EntitySet="AlumnoXSeccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetallePago_Pagos" Association="Self.FK_DetallePago_Pagos">
+      <End Role="Pagos" EntitySet="Pagos" />
+      <End Role="DetallePago" EntitySet="DetallePago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetallePago_TipoPago" Association="Self.FK_DetallePago_TipoPago">
+      <End Role="TipoPago" EntitySet="TipoPago" />
+      <End Role="DetallePago" EntitySet="DetallePago" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Materia_Maestro" Association="Self.FK_Materia_Maestro">
+      <End Role="Maestro" EntitySet="Maestro" />
+      <End Role="Materia" EntitySet="Materia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pagos_Alumno" Association="Self.FK_Pagos_Alumno">
+      <End Role="Alumno" EntitySet="Alumno" />
+      <End Role="Pagos" EntitySet="Pagos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Pagos_Usuario" Association="Self.FK_Pagos_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Pagos" EntitySet="Pagos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisosxUsuario_Permisos" Association="Self.FK_PermisosxUsuario_Permisos">
+      <End Role="Permisos" EntitySet="Permisos" />
+      <End Role="PermisosxUsuario" EntitySet="PermisosxUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PermisosxUsuario_Usuario" Association="Self.FK_PermisosxUsuario_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="PermisosxUsuario" EntitySet="PermisosxUsuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seccion_Grado" Association="Self.FK_Seccion_Grado">
+      <End Role="Grado" EntitySet="Grado" />
+      <End Role="Seccion" EntitySet="Seccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Seccion_Maestro" Association="Self.FK_Seccion_Maestro">
+      <End Role="Maestro" EntitySet="Maestro" />
+      <End Role="Seccion" EntitySet="Seccion" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
